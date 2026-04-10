@@ -1,0 +1,54 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {{title}}
+    </title>
+    {{!-- TailwindCSS CDN --}}
+    <script src="https://cdn.tailwindcss.com"></script>
+    {{!-- Google Fonts --}}
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background-color: #f3f4f6;
+      }
+    </style>
+     {{! Font Awesome (ikon) }}
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    {{!-- CSS External --}}
+    <link rel="stylesheet" href="/css/style.css">
+    {{!-- Favicon --}}
+    <link rel="shortcut icon" href="/images/logo.svg" type="image/x-icon">
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <header class="bg-white">
+     {{> navbar}}
+    </header>
+
+    <main class="flex flex-col grow">
+      {{!-- Flash Messages --}}
+      {{#if success_messages}}
+        {{#each success_messages}}
+          <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative text-center m-4 mb-0" role="alert">
+            <span class="block sm:inline">{{this}}</span>
+          </div>
+        {{/each}}
+      {{/if}}
+
+      {{#if error_messages}}
+        {{#each error_messages}}
+          <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative text-center m-4 mb-0" role="alert">
+            <span class="block sm:inline">{{this}}</span>
+          </div>
+        {{/each}}
+      {{/if}}
+
+      {{{body}}}
+    </main>
+  </body>
+</html>
